@@ -23,7 +23,7 @@
     "build": "webpack",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "console": "node dist/bundle.js",
+    "console": "node public/bundle.js",
     "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
