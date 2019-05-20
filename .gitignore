@@ -11,6 +11,9 @@
 # production
 **/build/
 
+# WebPack build
+**/bundle.js
+
 # misc
 .DS_Store
 .env.local
