@@ -1,4 +1,5 @@
 import { createStore } from 'redux'
+import { devToolsEnhancer } from 'redux-devtools-extension'
 
 /**
  * This is a reducer, a pure function with (state, action) => state signature.
@@ -23,16 +24,21 @@ function counter(state = 0, action) {
     }
 }
 
+const appName = "Counter Reducer"
+
 function run() {
     console.log(`
 #-------------------
-# Counter reducer
+# ${appName}
 #-------------------
 `)
 
     // Create a Redux store holding the state of your app.
     // Its API is { subscribe, dispatch, getState }.
-    let store = createStore(counter)
+    let store = createStore(
+        counter,
+        devToolsEnhancer({ name: appName })
+    )
     console.log("Created Redux store. Reducer =", counter)
     console.log("The initial state =", store.getState())
 

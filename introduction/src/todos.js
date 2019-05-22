@@ -1,6 +1,9 @@
 import { createStore } from 'redux'
+import { devToolsEnhancer  } from 'redux-devtools-extension'
 
-export const model = {
+const appName = "Todos Reducer"
+
+export const initialState = {
     todos: [{
         text: 'Eat food',
         completed: true
@@ -57,13 +60,17 @@ export const todoApp = (state = {}, action) => {
 export const run = () => {
     console.log(`
 #-------------------
-# Todos reducer
+# ${appName}
 #-------------------
 `)
 
     // Create a Redux store holding the state of your app.
     // Its API is { subscribe, dispatch, getState }.
-    let store = createStore(todoApp, model)
+    let store = createStore(
+        todoApp,
+        initialState,
+        devToolsEnhancer({ name: appName })
+    )
     console.log("Created Redux store. Reducer =", todoApp)
     console.log("The initial state =", store.getState())
 
