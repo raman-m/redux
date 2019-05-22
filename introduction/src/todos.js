@@ -63,16 +63,21 @@ export const run = () => {
 
     // Create a Redux store holding the state of your app.
     // Its API is { subscribe, dispatch, getState }.
-    let store = createStore(todoApp)
+    let store = createStore(todoApp, model)
     console.log("Created Redux store. Reducer =", todoApp)
+    console.log("The initial state =", store.getState())
 
     // You can use subscribe() to update the UI in response to state changes.
     // Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
     // However it can also be handy to persist the current state in the localStorage.
 
-    store.subscribe(() => console.log(store.getState()))
+    store.subscribe(() => console.log("State =", store.getState()))
 
     // The only way to mutate the internal state is to dispatch an action.
     // The actions can be serialized, logged or stored and later replayed.
-    store.dispatch(actions[0])
+    actions.forEach((action, index) => {
+        console.log(`\nDispatching action #${++index} with type '${action.type}'...`)
+        store.dispatch(action)
+    })
+    console.log("Finished dispatching.")
 }
