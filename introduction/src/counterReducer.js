@@ -23,10 +23,18 @@ function counter(state = 0, action) {
     }
 }
 
-function runner() {
+function run() {
+    console.log(`
+#-------------------
+# Counter reducer
+#-------------------
+`)
+
     // Create a Redux store holding the state of your app.
     // Its API is { subscribe, dispatch, getState }.
     let store = createStore(counter)
+    console.log("Created Redux store. Reducer =", counter)
+    console.log("The initial state =", store.getState())
 
     // You can use subscribe() to update the UI in response to state changes.
     // Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
@@ -36,12 +44,21 @@ function runner() {
 
     // The only way to mutate the internal state is to dispatch an action.
     // The actions can be serialized, logged or stored and later replayed.
-    store.dispatch({ type: 'INCREMENT' })
+    let actions = [
+        { type: 'INCREMENT' },
+        { type: 'INCREMENT' },
+        { type: 'DECREMENT' },
+    ]
+
+    // output
     // 1
-    store.dispatch({ type: 'INCREMENT' })
     // 2
-    store.dispatch({ type: 'DECREMENT' })
     // 1
+    actions.forEach((action, index) => {
+        console.log(`Dispatching action #${++index} with type '${action.type}'...`)
+        store.dispatch(action)
+    })
+    console.log("Finished dispatching.")
 }
 
-export { counter, runner }
+export { counter, run }

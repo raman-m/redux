@@ -1,3 +1,3 @@
-import { counter, runner } from './counterReducer'
+import * as counter from './counterReducer'
 
-runner()
+counter.run()
