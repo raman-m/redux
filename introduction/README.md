@@ -1,6 +1,6 @@
-# Redux-intro
+# Redux Introduction
 
-Redux Intro.
+Link: [Getting Started with Redux](https://redux.js.org/introduction/getting-started)
 
 ## Building and running on localhost
 
