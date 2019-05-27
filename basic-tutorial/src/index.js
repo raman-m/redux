@@ -1,4 +1,5 @@
 import { createStore } from 'redux'
+import { devToolsEnhancer  } from 'redux-devtools-extension'
 import {
     addTodo,
     toggleTodo,
@@ -15,7 +16,10 @@ console.log(`
 #-------------------
 `)
 
-const store = createStore(todoApp)
+const store = createStore(
+    todoApp,
+    devToolsEnhancer({ name: appName })
+)
 
 // Log the initial state
 console.log("The initial state =", store.getState())
