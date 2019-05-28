@@ -50,9 +50,9 @@ export const run = () => {
     const appName = "Redux Basics. Reducers"
 
     console.log(
-`#-------------------
+`#------------------------
 # ${appName}
-#-------------------
+#------------------------
 `)
 
     const store = createStore(
