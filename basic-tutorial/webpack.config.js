@@ -28,10 +28,14 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.(js|jsx)$/,
 				include: [path.resolve(__dirname, 'src')],
-				loader: 'babel-loader',
+				exclude: /node_modules/,
 
-				options: {
+				//loader: 'babel-loader',
+				use: ['babel-loader', 'eslint-loader'],
+
+				/*options: {
 					plugins: ['syntax-dynamic-import'],
 
 					presets: [
@@ -42,9 +46,7 @@ module.exports = {
 							}
 						]
 					]
-				},
-
-				test: /\.js$/
+				},*/
 			},
 			{
 				test: /\.(png|svg|jpg|gif|ico)$/,
@@ -70,7 +72,8 @@ module.exports = {
 		// chunkFilename: '[name].[chunkhash].js',
 		// filename: '[name].[chunkhash].js',
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'public')
+		path: path.resolve(__dirname, 'public'),
+		publicPath: '/',
 	},
 
 	mode: 'development',
@@ -80,6 +83,8 @@ module.exports = {
 		index: 'index.html',
 		port: 9000,
 	},
+
+	devtool: 'inline-source-map',
 
 	optimization: {
 		splitChunks: {
