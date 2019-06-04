@@ -22,6 +22,12 @@ To create a development build:
 npm run build-dev
 ```
 
+A development build could be made via short command:
+
+```sh
+npm run build
+```
+
 ## Running console
 
 ```sh
@@ -32,4 +38,16 @@ npm run console
 
 ```sh
 npm run start
+```
+
+## Check formatting rules by [Prettier](https://prettier.io)
+
+```sh
+npm run format
+```
+
+## Check JS & JSX syntax rules by [ESLint](https://eslint.org)
+
+```sh
+npm run eslint-fix
 ```
